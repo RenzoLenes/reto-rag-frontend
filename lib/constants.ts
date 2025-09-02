@@ -1,5 +1,5 @@
 // API Configuration
-export const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL || 'http://localhost:8000';
+export const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL || 'https://reto-rag-production.up.railway.app';
 
 // Error Messages
 export const ERROR_MESSAGES = {

@@ -23,7 +23,7 @@ class ApiClient {
   private baseUrl: string;
   private token: string | null = null;
 
-  constructor(baseUrl: string = 'http://localhost:8000') {
+  constructor(baseUrl: string = 'https://reto-rag-production.up.railway.app') {
     this.baseUrl = baseUrl;
     
     // Try to get token from localStorage on initialization
