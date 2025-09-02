@@ -1,36 +1,65 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# RAG Chat Frontend
 
-## Getting Started
+Frontend desarrollado en Next.js 15 con TypeScript para consumir un backend de FastAPI con funcionalidad RAG.
 
-First, run the development server:
+## 🚀 Características
+
+- ✅ **Autenticación JWT** - Login/Register completo
+- ✅ **Gestión de sesiones** - Crear, renombrar, eliminar
+- ✅ **Upload de PDFs** - Drag & drop de documentos
+- ✅ **Chat RAG** - Preguntas basadas en documentos
+- ✅ **Fuentes** - Referencias con páginas y relevancia
+- ✅ **Estado Zustand** - Manejo global eficiente
+- ✅ **UI shadcn/ui** - Componentes elegantes
+- ✅ **Error handling** - Sistema robusto
+
+## ⚡ Instalación
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+**Backend requerido:** `http://localhost:8000`
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 🔐 Autenticación JWT
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Login usa FormData (compatible con FastAPI OAuth2PasswordRequestForm):
+- `username` (email del usuario)  
+- `password`
 
-## Learn More
+## 📡 Endpoints Backend
 
-To learn more about Next.js, take a look at the following resources:
+```
+POST /auth/login       # FormData login
+POST /auth/register    # JSON register
+GET /health           # Token validation
+GET /sessions/        # List sessions
+POST /sessions/       # Create session
+GET /documents/       # List documents
+POST /documents/upload # Upload PDF
+GET /chat/messages/{session_id} # Get messages
+POST /chat/message    # Send message
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 🏗 Estructura
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```
+app/
+├── (auth)/login|register/
+├── (chat)/page.tsx
+└── page.tsx (redirect)
 
-## Deploy on Vercel
+components/
+├── chat/ - Interface de chat
+├── sidebar/ - Sesiones y docs
+└── providers/ - Auth y errors
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+store/ - Zustand stores
+lib/ - API client y utils
+types/ - TypeScript definitions
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 🚀 Listo!
+
+El frontend está completo y listo para tu backend FastAPI.

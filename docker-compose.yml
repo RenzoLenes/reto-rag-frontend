@@ -1,0 +1,30 @@
+version: '3.8'
+
+services:
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+      - PORT=3000
+      - NEXT_PUBLIC_API_URL=http://localhost:8000
+    depends_on:
+      - backend
+    networks:
+      - app-network
+
+  backend:
+    image: your-backend-image:latest  # Reemplaza con tu imagen del backend
+    ports:
+      - "8000:8000"
+    environment:
+      - PORT=8000
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
